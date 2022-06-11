@@ -1,0 +1,1415 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://gallery.dachunwang.top/img/20211110151913.png">
+  <link rel="icon" href="https://gallery.dachunwang.top/img/20211110151913.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Wainic">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="此阶段学习完成后应具备的能力：  知道测试的主要工作内容 能够掌握常用用例设计方法及应用场景 能够使用缺陷管理工具对缺陷进行管理 能够对 web 项目功能进行实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件测试学习 - 测试基础">
+<meta property="og:url" content="https://blog.wainic.com/articles/softwaretesting-fundamentals/index.html">
+<meta property="og:site_name" content="Wainic&#39;notes">
+<meta property="og:description" content="此阶段学习完成后应具备的能力：  知道测试的主要工作内容 能够掌握常用用例设计方法及应用场景 能够使用缺陷管理工具对缺陷进行管理 能够对 web 项目功能进行实战">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gallery.dachunwang.top/img/20211117173054.png">
+<meta property="article:published_time" content="2021-11-17T08:20:30.000Z">
+<meta property="article:modified_time" content="2022-06-11T02:45:36.775Z">
+<meta property="article:author" content="Wainic">
+<meta property="article:tag" content="软件测试">
+<meta property="article:tag" content="测试基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gallery.dachunwang.top/img/20211117173054.png">
+  
+  
+  
+    <link rel="stylesheet" href="https://code.bdstatic.com/npm/font-awesome@4.7.0/css/font-awesome.min.css"> <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.6.0/css/bootstrap-grid.min.css"> <link rel="stylesheet" href="https://lib.baomitu.com/Swiper/2.7.6/idangerous.swiper.min.css"> 
+  
+  <title>软件测试学习 - 测试基础 - Wainic&#39;notes</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/book_list.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.wainic.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://gallery.dachunwang.top/img/20211117215702.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Wainic&#39;s notes</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gallery.dachunwang.top/img/20211110173829.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="软件测试学习 - 测试基础"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-11-17 16:20" pubdate>
+          2021年11月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">软件测试学习 - 测试基础</h1>
+            
+            <div class="markdown-body">
+              
+              <blockquote>
+<p>此阶段学习完成后应具备的能力：</p>
+<ul>
+<li>知道测试的主要工作内容</li>
+<li>能够掌握常用用例设计方法及应用场景</li>
+<li>能够使用缺陷管理工具对缺陷进行管理</li>
+<li>能够对 web 项目功能进行实战</li>
+</ul>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="软件测试"><a href="#软件测试" class="headerlink" title="软件测试"></a>软件测试</h2><ul>
+<li><p>定义：使用技术手段验证软件是否满足需求</p>
+</li>
+<li><p>目的：用最少的人力、物力、财力，找到软件中的问题并修复，从而降低商业风险</p>
+</li>
+</ul>
+<h2 id="测试主流技能"><a href="#测试主流技能" class="headerlink" title="测试主流技能"></a>测试主流技能</h2><ul>
+<li>功能测试（手工测试）：主要验证程序的功能是否符合需求</li>
+<li>自动化测试：使用代码或工具代替人工验证项目功能</li>
+<li>接口测试：针对模块与模块或系统与系统之间数据请求地址进行测试</li>
+<li>性能测试：模拟多人使用软件，查找服务器缺陷</li>
+</ul>
+<h2 id="测试常用分类"><a href="#测试常用分类" class="headerlink" title="测试常用分类"></a>测试常用分类</h2><h3 id="按测试阶段划分"><a href="#按测试阶段划分" class="headerlink" title="按测试阶段划分"></a>按测试阶段划分</h3><ul>
+<li>单元测试：又称白盒测试，针对程序源代码进行测试（开发）</li>
+<li>集成测试：又称接口测试，主要针对模块与模块或系统与系统之间的接口进行验证</li>
+<li>系统测试：针对软件全面进行验证（功能、兼容、文档）</li>
+<li>验收测试：使用内侧、公测来实现<ul>
+<li>内侧：公司内部进行测试</li>
+<li>公测：让玩家来进行测试</li>
+</ul>
+</li>
+</ul>
+<h3 id="按代码可见度划分"><a href="#按代码可见度划分" class="headerlink" title="按代码可见度划分"></a>按代码可见度划分</h3><ul>
+<li>黑盒测试：又称功能测试，看不见源代码，主要对程序功能进行测试    </li>
+<li>灰盒测试：又称接口测试，可以看见部分代码，主要对程序接口进行测试</li>
+<li>白盒测试：又称单元测试，可以看见全部代码，主要对程序源代码进行测试</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>系统测试和黑盒测试重点核心是功能测试</li>
+<li>集成测试和灰盒测试又称接口测试</li>
+<li>单元测试和白盒测试是对代码进行测试</li>
+<li>自动化测试归属功能测试</li>
+<li>性能测试、安全测试归属于专项测试</li>
+</ul>
+<h3 id="扩展-测试策略"><a href="#扩展-测试策略" class="headerlink" title="扩展-测试策略"></a>扩展-测试策略</h3><ul>
+<li>冒烟测试：大规模执行测试之前，针对程序主功能进行验证，保证程序具备可测性。</li>
+<li>面试题：提测标准是什么 / 测试之前要怎么做 ？ 冒烟测试通过 </li>
+</ul>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><h3 id="质量模型"><a href="#质量模型" class="headerlink" title="质量模型"></a>质量模型</h3><blockquote>
+<p>质量模型提供测试设计的<strong>不同角度视野</strong>和验证方向</p>
+<p>学习：针对任何软件或硬件，测试要覆盖的方面</p>
+</blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211117164045.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<p><img src="https://gallery.dachunwang.top/img/20211117164722.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<blockquote>
+<p>重点关注：功能、兼容、性能、易用、安全</p>
+</blockquote>
+<h3 id="测试模型-W-模型"><a href="#测试模型-W-模型" class="headerlink" title="测试模型 - W 模型"></a>测试模型 - W 模型</h3><blockquote>
+<p> W 模型简称 “双 V “ 模型，即以开发主导的一个 ” V “ 和以测试主导的另一个 ” V “ 构成</p>
+<p>学习：软件开发流程、软件测试在开发流程中的作用</p>
+</blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211117144555.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<p>开发流程：需求分析、概要设计、详细设计、编码、集成、实施、交付</p>
+<p>测试流程：单元测试、集成测试、系统测试、验收测试</p>
+<ul>
+<li>优点<ul>
+<li>测试伴随整个产品开发周期，测试对象不仅是程序还有需求、设计文档</li>
+<li>测试介入较早，及早发现问题，降低修复成本</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>缺点<ul>
+<li>实施起来比较复杂，难度大，对于需求阶段和设计阶段的测试设计要求较高</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>总结<ul>
+<li>测试人员需要项目的功能、性能、兼容、易用、安全、可靠性、移植性来验证被测软件</li>
+<li>重点：功能、性能、兼容、易用、安全</li>
+</ul>
+</li>
+</ul>
+<h2 id="软件测试流程"><a href="#软件测试流程" class="headerlink" title="软件测试流程"></a>软件测试流程</h2><p><img src="https://gallery.dachunwang.top/img/20211117150032.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<ul>
+<li><p>需求分析</p>
+<blockquote>
+<p>前置：阅读需求分析文档，记录不明确之处。</p>
+</blockquote>
+<ul>
+<li>确定各部门对需求理解一致</li>
+<li>站在不同角度对需求进行查漏补缺</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>计划编写<ul>
+<li>测什么：测试目标及范围</li>
+<li>谁来测：人员进度安排</li>
+<li>怎么测：测试策略、测试工具</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>用例设计</p>
+<blockquote>
+<p>设计执行测试的文档</p>
+</blockquote>
+</li>
+<li><p>用例执行</p>
+<blockquote>
+<p>执行测试的文档</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>缺陷管理</p>
+<blockquote>
+<p>提交 -&gt; 验证 -&gt; 关闭</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>测试报告<ul>
+<li>测试目标</li>
+<li>测试工程</li>
+<li>缺陷统计</li>
+<li>缺陷分析</li>
+<li>测试总结</li>
+</ul>
+</li>
+</ul>
+<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><blockquote>
+<p>用例：用户使用的案例</p>
+<p>测试用例：是为测试项目而设计的执行文档</p>
+<p>考虑点：质量模型（功能、性能、兼容、易用、安全）</p>
+</blockquote>
+<h3 id="测试用例的作用"><a href="#测试用例的作用" class="headerlink" title="测试用例的作用"></a>测试用例的作用</h3><ul>
+<li>防止漏测</li>
+<li>实施测试的标准</li>
+</ul>
+<h3 id="用例设计编写格式"><a href="#用例设计编写格式" class="headerlink" title="用例设计编写格式"></a>用例设计编写格式</h3><ul>
+<li>八大要素：<ul>
+<li>用例编号：项目 + 模块 + 编号</li>
+<li>用例标题：预期结果 + 操作步骤</li>
+<li>模块 / 项目：所属项目或模块</li>
+<li>前置条件：要执行此条用例，有哪些前置操作</li>
+<li>优先级：表示用例的重要程度或者影响力 P0 ~ P4 （ P0最高 ）</li>
+<li>测试步骤：描述操作步骤</li>
+<li>测试数据：操作的数据，没有的话可以为空</li>
+<li>预期结果：期望达到的结果</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>示例：</p>
+<p><img src="https://gallery.dachunwang.top/img/20211117155256.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+<blockquote>
+<p>规范用例标题：预期结果 + 测试点</p>
+<p>用例标题作用：方便评审，方便执行</p>
+<p>验证码测试用例：</p>
+<ul>
+<li>为空</li>
+<li>错误</li>
+<li>过期</li>
+<li>正确</li>
+</ul>
+</blockquote>
+<h3 id="如何设计用例"><a href="#如何设计用例" class="headerlink" title="如何设计用例"></a>如何设计用例</h3><ul>
+<li>不同场景和需求，有不同的用例设计方法，需要学习用例的设计方法。</li>
+</ul>
+<h2 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h2><p><img src="https://gallery.dachunwang.top/img/20211117181048.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<h2 id="等价类划分法"><a href="#等价类划分法" class="headerlink" title="等价类划分法"></a>等价类划分法</h2><blockquote>
+<p>在所有测试数据中，具有某种共同特征的数据集合进行划分。</p>
+<p>用于解决穷举问题</p>
+</blockquote>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul>
+<li>有效等价类：所有满足需求的数据集合，取一个即可。</li>
+<li>无效等价类：所有不满足需求的数据集合，取一个即可。</li>
+</ul>
+<h3 id="设计用例步骤"><a href="#设计用例步骤" class="headerlink" title="设计用例步骤"></a>设计用例步骤</h3><ul>
+<li>明确需求</li>
+<li>确定有效和无效等价类</li>
+<li>提取数据编写测试用例</li>
+</ul>
+<h3 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h3><blockquote>
+<p>需求：验证 QQ 账号的合法性</p>
+<p>要求：6 ~ 10 位自然数</p>
+</blockquote>
+<ul>
+<li><p>明确需求</p>
+<ul>
+<li>6 - 10 位自然数</li>
+</ul>
+</li>
+<li><p>确定有效和无效等价类</p>
+<ul>
+<li>有效：8 位自然数</li>
+<li>无效：<ul>
+<li>4 位自然数</li>
+<li>8位非自然数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>提取数据编写测试用例</p>
+<ul>
+<li><p>有效数据：</p>
+<ul>
+<li>12345678</li>
+</ul>
+</li>
+<li><p>无效数据：</p>
+<ul>
+<li><p>1234</p>
+</li>
+<li><p>1234567a</p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118142651.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+<li><p>用例执行</p>
+<blockquote>
+<p>提示：预期结果与实际结果不一致，为缺陷。</p>
+<p><img src="https://gallery.dachunwang.top/img/20211118142608.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a>案例2</h3><blockquote>
+<p>需求：验证某城市电话号码正确性</p>
+<p>要求：</p>
+<ul>
+<li>区号：空或者是三位数字</li>
+<li>前缀码：非 “0” 且非 “1” 开头的三位数字</li>
+<li>后缀码：四位数字</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>明确要求</p>
+<ul>
+<li>区号：空或者是三位数字</li>
+<li>前缀码：非 “0” 且非 “1” 开头的三位数字</li>
+<li>后缀码：四位数字</li>
+</ul>
+</li>
+<li><p>确定有效和无效等价类</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118113829.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+<li><p>提取数据编写测试用例</p>
+<blockquote>
+<p>技巧：</p>
+<ul>
+<li>有效等价类数据覆盖组合</li>
+<li>无效等价类数据不可组合</li>
+</ul>
+</blockquote>
+<ul>
+<li>有效数据：<ul>
+<li>区号：空  前缀码：234  后缀码：1234</li>
+<li>区号：123  前缀码：234  后缀码：1234</li>
+</ul>
+</li>
+<li>无效数据：<ul>
+<li>区号：1  前缀码：234  后缀码：1234</li>
+<li>区号：空  前缀码：23  后缀码：1234</li>
+<li>区号：空  前缀码：234  后缀码：123</li>
+<li>区号：a12  前缀码：234  后缀码：1234</li>
+<li>区号：空  前缀码：23a  后缀码：1234</li>
+<li>区号：空  前缀码：234  后缀码：123a</li>
+<li>区号：空  前缀码：012  后缀码：1234</li>
+<li>区号：空  前缀码：123  后缀码：1234</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118142247.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>用例执行</p>
+<blockquote>
+<p>提示：预期结果与实际结果不一致，为缺陷。</p>
+<p><img src="https://gallery.dachunwang.top/img/20211118142209.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>针对：需要有大量数据测试输入，但是没法穷举测试的地方。<ul>
+<li>输入框</li>
+<li>下拉列表</li>
+<li>单选复选框</li>
+</ul>
+</li>
+<li>典型代表：页面级的输入框类测试</li>
+</ul>
+<h2 id="边界值分析法"><a href="#边界值分析法" class="headerlink" title="边界值分析法"></a>边界值分析法</h2><blockquote>
+<p>解决边界限制问题</p>
+</blockquote>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><ul>
+<li><p>选取正好等于、刚好大于、刚好小于边界的值作为测试数据【最多设计 7 条用例】</p>
+<ul>
+<li>上点：边界上的点（正好等于）</li>
+<li>离点：距离上点最接近的点（刚好大于、刚好小于）</li>
+<li>内点：范围内的点（区间范围内的数据）</li>
+</ul>
+<blockquote>
+<p>示例：</p>
+<p><img src="https://gallery.dachunwang.top/img/20211118140302.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="设计用例步骤-1"><a href="#设计用例步骤-1" class="headerlink" title="设计用例步骤"></a>设计用例步骤</h3><ul>
+<li>明确需求</li>
+<li>确定有效和无效等价类</li>
+<li>确定边界范围值</li>
+<li>提取数据编写测试用例</li>
+</ul>
+<h3 id="案例1-1"><a href="#案例1-1" class="headerlink" title="案例1"></a>案例1</h3><blockquote>
+<p>需求：通过边界值法验证标题长度的合法性</p>
+<p>要求：标题长度大于 0 ，小于等于 30 个字符</p>
+</blockquote>
+<ul>
+<li><p>明确需求</p>
+<ul>
+<li>长度大于 0 个字符</li>
+<li>长度小于等于 30 个字符</li>
+</ul>
+</li>
+<li><p>确定有效和无效等价类</p>
+<ul>
+<li>有效：<ul>
+<li>长度大于 0 小于 30 个字符</li>
+</ul>
+</li>
+<li>无效：<ul>
+<li>长度等于 0 个字符</li>
+<li>长度大于 30 个字符</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>确定边界值范围</p>
+<blockquote>
+<ul>
+<li>上点：0  30</li>
+<li>离点：-1  1  29  31</li>
+<li>内点：15</li>
+</ul>
+</blockquote>
+<ul>
+<li>有效：<ul>
+<li>1</li>
+<li>29</li>
+<li>30</li>
+</ul>
+</li>
+<li>无效<ul>
+<li>0</li>
+<li>31</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>提取数据编写测试用例</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118143538.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="案例2-1"><a href="#案例2-1" class="headerlink" title="案例2"></a>案例2</h3><blockquote>
+<p>需求：通过边界值法验证 QQ 号的合法性</p>
+<p>要求：6 ~ 10 位自然数</p>
+</blockquote>
+<ul>
+<li><p>明确需求</p>
+<ul>
+<li> 6 ~ 10 位自然数</li>
+</ul>
+</li>
+<li><p>确定有效和无效等价类</p>
+<ul>
+<li>有效：<ul>
+<li>大于等于 6 位自然数</li>
+<li>小于等于 10 位自然数</li>
+</ul>
+</li>
+<li>无效：<ul>
+<li>小于 6 位自然数</li>
+<li>大于 10 位自然数</li>
+<li>非自然数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>确定边界值范围</p>
+<blockquote>
+<ul>
+<li>上点： 6  10</li>
+<li>离点：5  7  9  11</li>
+<li>内点：8</li>
+</ul>
+</blockquote>
+<ul>
+<li>有效：<ul>
+<li>6 位自然数</li>
+<li>7 位自然数</li>
+<li>8 位自然数</li>
+<li>9 位自然数</li>
+<li>10 位自然数</li>
+</ul>
+</li>
+<li>无效：<ul>
+<li>5 位自然数</li>
+<li>11 位自然数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>提取数据编写测试用例</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118145423.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+<li><p>优化</p>
+<blockquote>
+<ul>
+<li>结论：7 个优化为 5 个点</li>
+<li>上点：必选（不考虑区间开闭）</li>
+<li>内点：必选（建议选择中间范围）</li>
+<li>离点：开内闭外（考虑开闭区间，开区间选择内部离点，闭区间选择外部离点）</li>
+</ul>
+<p><img src="https://gallery.dachunwang.top/img/20211118150608.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>在等价类的基础上针对有边界范围的测试数据输入的地方（重点关注边界）</li>
+<li>常见词语描述：大小、尺寸、重量、最大、最小、至多、至少等修饰词语</li>
+<li>典型代表：有边界范围的输入框类测试</li>
+</ul>
+<blockquote>
+<p>提示：边界值可以覆盖等价类的长度，但是无法覆盖类型。所以在设计用例时，必须两者结合。</p>
+</blockquote>
+<h2 id="判定表法"><a href="#判定表法" class="headerlink" title="判定表法"></a>判定表法</h2><blockquote>
+<p>解决多条件组合依赖测试点覆盖问题</p>
+</blockquote>
+<h3 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h3><ul>
+<li>案例：验证 “若用户欠费或者关机，则不允许主被叫” 功能的测试</li>
+<li>说明：<ul>
+<li>等价类边界值分析法主要关注单个输入类条件的测试。</li>
+<li>并未考虑输入条件之间的各种组合、输入条件与输出结果之间有相互制约关系的测试。</li>
+</ul>
+</li>
+</ul>
+<h3 id="定义及组成部分"><a href="#定义及组成部分" class="headerlink" title="定义及组成部分"></a>定义及组成部分</h3><ul>
+<li><p>定义：是一种以表格形式表达多条件逻辑判断的工具</p>
+</li>
+<li><p>组成：</p>
+<ul>
+<li>条件桩：列出问题中的所有条件，列出条件的次序无关紧要。</li>
+<li>动作桩：列出问题中可能采取的操作，操作的顺序没有约束。</li>
+<li>条件项：列出条件对应的取值，所有可能情况下的真假值。</li>
+<li>动作项：列出条件项的、各种取值情况下应该采取的动作结构。</li>
+</ul>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118152506.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+<li><p>规则</p>
+<ul>
+<li>判定表中贯穿条件项和动作项的一列就是一条规则</li>
+<li>假设有 n 个条件，每个条件的取值有两个（0,1），全组合有 2 的 n 次方种规则</li>
+</ul>
+</li>
+</ul>
+<h3 id="设计用例步骤-2"><a href="#设计用例步骤-2" class="headerlink" title="设计用例步骤"></a>设计用例步骤</h3><ul>
+<li>明确需求</li>
+<li>画出判定表<ul>
+<li>列出条件桩和动作桩</li>
+<li>填写条件项，对条件进行全组合</li>
+<li>根据条件项的组合确定动作项</li>
+<li>简化、合并想死规则（有相同的动作）</li>
+</ul>
+</li>
+<li>根据规则编写测试用例</li>
+</ul>
+<h3 id="案例1-2"><a href="#案例1-2" class="headerlink" title="案例1"></a>案例1</h3><blockquote>
+<p>订购单检查</p>
+<ul>
+<li>如果订单大于 500 元，又未过期，则发出批准单和提货单</li>
+<li>如果金额大于 500 元，但过期了，则不发批准单和提货单</li>
+<li>如果金额小于等于 500 元，则无论是否过期都发出批准单和提货单</li>
+<li>在过期情况下不论金额大小都需要发出通知单</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>明确需求</p>
+<ul>
+<li>如果订单大于 500 元，又未过期，则发出批准单和提货单</li>
+<li>如果金额大于 500 元，但过期了，则不发批准单和提货单</li>
+<li>如果金额小于等于 500 元，则无论是否过期都发出批准单和提货单</li>
+<li>在过期情况下不论金额大小都需要发出通知单</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>画出判定表</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118181654.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+<li><p>根据规则编写测试用例</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118183246.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="案例2-2"><a href="#案例2-2" class="headerlink" title="案例2"></a>案例2</h3><blockquote>
+<p>文件修改规则：</p>
+<ul>
+<li>输入的第一列字符必须是 A 或 B</li>
+<li>第二列字符必须是一个数字</li>
+<li>如果第一列字符不正确，则给出信息 L</li>
+<li>如果第二列字符不正确，则给出信息 M</li>
+<li>如果两列字符输入正确，则修改文件成功</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>明确需求</p>
+<ul>
+<li>输入的第一列字符必须是 A 或 B</li>
+<li>第二列字符必须是一个数字</li>
+<li>如果第一列字符不正确，则给出信息 L</li>
+<li>如果第二列字符不正确，则给出信息 M</li>
+<li>如果两列字符输入正确，则修改文件成功</li>
+</ul>
+</li>
+<li><p>画出判定表</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118185946.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+<li><p>根据规则编写测试用例</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118185916.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+<li><p>适用场景</p>
+<ul>
+<li><p>有多个输入条件，多个输出结果，输入条件之间有<strong>组合</strong>条件，输入条件和输出结果直接有依赖（制约）关系</p>
+</li>
+<li><p>判定表一般适用于条件组合数量较少的情况（比如 4 个条件以下）</p>
+<blockquote>
+<p>提示： 如果碰到项目中多条件组合大于4 个相互依赖，可以使用 <strong>正交表</strong>和<strong>因果图</strong>来实现</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="场景法"><a href="#场景法" class="headerlink" title="场景法"></a>场景法</h2><blockquote>
+<p>场景法也可以叫流程图法，是用流程图描述用户的使用场景，然后通过覆盖流程路径来设计测试用例。</p>
+<p>主要用来解决项目业务场景测试点覆盖问题</p>
+</blockquote>
+<h3 id="扩展：流程图"><a href="#扩展：流程图" class="headerlink" title="扩展：流程图"></a>扩展：流程图</h3><blockquote>
+<p>使用标准图形和箭头来表达程序或业务的走向</p>
+<p>提示：主要用来解决业务用例问题</p>
+</blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118192127.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<ul>
+<li>流程图对测试人员有什么用？<ul>
+<li>能够看懂流程图，设计业务用例</li>
+<li>当需求文档信息不全时，能够根据需求，梳理出流程</li>
+</ul>
+</li>
+<li>网页版工具：<a target="_blank" rel="noopener" href="https://www.processon.com/">ProcessOn - 免费在线作图，思维导图，流程图，实时协作</a></li>
+<li>Windows 工具：Visio</li>
+</ul>
+<h3 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h3><ul>
+<li>用户使用角度：用户平时使用的不是单个功能，而是多个功能组合起来进行使用</li>
+<li>测试人员角度：平时测试的都是单个功能点进行测试，容易忽略多个功能的组合测试</li>
+</ul>
+<h3 id="适用场景-2"><a href="#适用场景-2" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>根据实际的应用场景，来测试业务用力，可以使用场景法</li>
+</ul>
+<h3 id="案例1-3"><a href="#案例1-3" class="headerlink" title="案例1"></a>案例1</h3><blockquote>
+<p>ATM 机取款流程</p>
+<p><img src="https://gallery.dachunwang.top/img/20211118203136.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<p><img src="https://gallery.dachunwang.top/img/20211118203206.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+<ul>
+<li><p>测试用例</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211118205534.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>提示：一般将成功的业务线进行冒烟测试</p>
+</blockquote>
+<h2 id="扩展-错误推荐法"><a href="#扩展-错误推荐法" class="headerlink" title="扩展-错误推荐法"></a>扩展-错误推荐法</h2><blockquote>
+<p>通过<strong>经验</strong>推测系统可能出现的问题</p>
+</blockquote>
+<h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><ul>
+<li>根据<strong>经验</strong>列举出可能出现问题的清单，根据清单分析问题可能的原因，推测发现缺陷</li>
+</ul>
+<h3 id="适用场景-3"><a href="#适用场景-3" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li><strong>时间紧任务量大</strong>时，根据之前项目类似经验找出易出错的模块重点测试</li>
+<li>时间宽裕通过该方法列出之前出现问题较多的模块再次测试</li>
+</ul>
+<h2 id="知识回顾-1"><a href="#知识回顾-1" class="headerlink" title="知识回顾"></a>知识回顾</h2><p><img src="https://gallery.dachunwang.top/img/20211118212746.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<h2 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h2><blockquote>
+<p>软件在使用过程中存在的任何<strong>问题</strong>都叫软件的缺陷，简称 bug 。</p>
+</blockquote>
+<h3 id="判定标准"><a href="#判定标准" class="headerlink" title="判定标准"></a>判定标准</h3><blockquote>
+<p>衡量是否为缺陷的标准</p>
+</blockquote>
+<ul>
+<li>软件未实现需求（规格）说明书中明确要求的功能 - <strong>少功能</strong></li>
+<li>软件出现了需求（规格）说明书中指明不应该出现的错误 - <strong>功能错误</strong></li>
+<li>软件实现的功能超出需求（规格）说明书指明的范围 - <strong>多功能</strong></li>
+<li>软件未实现需求（规格）说明书中虽未明确指明但应该实现的要求 - <strong>隐形功能错误</strong></li>
+<li>软件难以理解，不易使用，运行缓慢，用户体验不好 - <strong>不易使用</strong></li>
+</ul>
+<h3 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h3><ul>
+<li>需求阶段 - 需求描述不易理解，有歧义，错误等。</li>
+<li>设计阶段 - 设计文档存在错误或者缺陷</li>
+<li>编码阶段 - 代码出现错误</li>
+<li>运行阶段 - 软硬件系统本身故障导致软件缺陷</li>
+</ul>
+<blockquote>
+<p>是软件就有缺陷。</p>
+</blockquote>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p><img src="https://gallery.dachunwang.top/img/20211122154403.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<h3 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h3><blockquote>
+<p>描述缺陷使用</p>
+</blockquote>
+<ul>
+<li>缺陷的标题 - 描述缺陷的核心问题</li>
+<li>缺陷的预置条件 - 缺陷产生的前提</li>
+<li>缺陷的复现步骤 - 复现缺陷的过程</li>
+<li>缺陷的预期结果 - 希望得到的结果</li>
+<li>缺陷的实际结果 - 实际得到的结果</li>
+<li>缺陷的必要附件 - 图片、日志等信息（证据）</li>
+</ul>
+<blockquote>
+<p>缺陷的必要附件可以为空</p>
+</blockquote>
+<h3 id="提交要素"><a href="#提交要素" class="headerlink" title="提交要素"></a>提交要素</h3><blockquote>
+<p>通过缺陷管理工具与开发交流使用</p>
+</blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211122155752.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<h3 id="缺陷类型"><a href="#缺陷类型" class="headerlink" title="缺陷类型"></a>缺陷类型</h3><ul>
+<li>功能错误</li>
+<li>界面（UI）错误</li>
+<li>兼容性</li>
+<li>数据</li>
+<li>易用性</li>
+<li>改进建议</li>
+<li>架构</li>
+</ul>
+<blockquote>
+<p> 面试题：你如何区分前端 bug 和 后端 bug ？</p>
+<ul>
+<li> 如果是界面或兼容性的错误为前端 bug</li>
+<li>如果是功能错误区分前端和后端 bug ，需要抓包查看请求和响应</li>
+</ul>
+</blockquote>
+<h3 id="缺陷编写"><a href="#缺陷编写" class="headerlink" title="缺陷编写"></a>缺陷编写</h3><ul>
+<li><p>缺陷报告示例</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211122164104.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<p>标题：操作数据描述 + 预期 + 实际</p>
+</blockquote>
+</li>
+<li><p>跟踪流程</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211122164151.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<p>面试题：发现 bug 后首先要怎么办？</p>
+<p>​               确认 bug 可复现</p>
+</blockquote>
+</li>
+<li><p>注意事项</p>
+<ul>
+<li>可复现 - 缺陷可以复现</li>
+<li>唯一性 - 一个缺陷上报一个问题</li>
+<li>规范性 - 符合公司或者项目要求</li>
+</ul>
+</li>
+<li><p>编写规范</p>
+<ul>
+<li>准确 - 描述的信息是正确的</li>
+<li>具体 - 有细节且是真实特定的</li>
+<li>简洁易懂 - 描述简单容易理解</li>
+<li>次序清晰 - 描述缺陷过程有条件，有先后顺序</li>
+</ul>
+</li>
+</ul>
+<h2 id="缺陷管理工具-禅道"><a href="#缺陷管理工具-禅道" class="headerlink" title="缺陷管理工具 - 禅道"></a>缺陷管理工具 - 禅道</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ul>
+<li><p>地址：<a target="_blank" rel="noopener" href="https://www.zentao.net/">https://www.zentao.net/</a></p>
+</li>
+<li><p>特点</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211122165828.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>对测试人员作用</p>
+<ul>
+<li>缺陷管理【重点】</li>
+<li>用例管理</li>
+</ul>
+</li>
+<li><p>使用流程</p>
+<blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211122170526.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+</li>
+</ul>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><blockquote>
+<p>要求：将以下缺陷通过禅道进行管理</p>
+<p><img src="https://gallery.dachunwang.top/img/20211122164104.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+</blockquote>
+<p><img src="https://gallery.dachunwang.top/img/20211122171825.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<h2 id="知识回顾-2"><a href="#知识回顾-2" class="headerlink" title="知识回顾"></a>知识回顾</h2><p><img src="https://gallery.dachunwang.top/img/20211122180728.png" srcset="https://gallery.dachunwang.top/img/20211117215702.gif" lazyload></p>
+<h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="category-chain-item">软件测试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">#软件测试</a>
+      
+        <a href="/tags/%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80/">#测试基础</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>软件测试学习 - 测试基础</div>
+      <div>https://blog.wainic.com/articles/softwaretesting-fundamentals/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Wainic</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年11月17日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/articles/hexo-auto-deploy/" title="利用 GitHub Actions 自动部署 Hexo 博客">
+                        <span class="hidden-mobile">利用 GitHub Actions 自动部署 Hexo 博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <span>Powered by</span> <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <span> & </span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <br> <a href="https://www.netlify.com/" target="_blank" rel="nofollow noopener"><span>Netlify </span></a><span> 提供网站托管服务</span> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
